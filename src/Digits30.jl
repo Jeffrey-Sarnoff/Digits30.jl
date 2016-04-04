@@ -8,7 +8,8 @@ import Base: convert, promote_rule, hash, string, show,
              isequal, isless, (<),(<=),(==),(>=),(>),
              trunc, round, floor, ceil,
              (+),(*),(/),(\),
-             (%),mod,rem,div,fld,cld,divrem,fldmod
+             (%),mod,rem,div,fld,cld,divrem,fldmod,
+             fma
 
 export Digit30, D30,
        iszero, ispos, ispoz, isneg,
