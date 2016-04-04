@@ -30,8 +30,8 @@ end
 ldexp{I<:Integer}(fx::Tuple{Digit30,I}) = ldexp(fx...)
 
 
-zero(::Type{Digit30{T}}) = FloatFloat(zero(T), zero(T))
-one(::Type{Digit30{T}}) = FloatFloat(one(T), zero(T))
+zero(::Type{Digit30}) = FloatFloat(zero(T), zero(T))
+one(::Type{Digit30}) = FloatFloat(one(T), zero(T))
 zero(x::Digit30) = zero(Digit30)
 one(x::Digit30) = one(Digit30)
 
