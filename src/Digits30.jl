@@ -1,4 +1,4 @@
-VERSION > v"0.4.99" && __precompile__()
+VERSION > v"0.4.9" && __precompile__()
 
 module Digits30
 
