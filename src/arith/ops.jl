@@ -151,7 +151,7 @@ end
 
 # roots
 
-function sqrt(a::Digit30)
+function sqrt1(a::Digit30)
     if a.hi <= zero(Float64)
        if a.hi == zero(Float64)
            return zero(Digit30)
@@ -174,7 +174,9 @@ function sqrt(a::Digit30)
     r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
 
     r = a*r
-    divby2(r + a/r)
+    #divby2(r + a/r)
+    r += a/r
+    divby2(r)
 end
 
 
