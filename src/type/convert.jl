@@ -18,8 +18,27 @@ function convert(::Type{Digit30}, x::BigFloat)
     Digit30(hi,lo)
 end
 
-function convert(::Type{BigFloat}, x::Digit30)
-    convert(BigFloat,x.hi) + convert(BigFloat,x.lo)
+convert(::Type{BigFloat}, x::Digit30) = convert(BigFloat,x.hi) + convert(BigFloat,x.lo)
+
+
+convert(::Type{Float64}, x::Digit30) = x.hi
+convert(::Type{Float32}, x::Digit30) = convert(Float32, x.hi)
+convert(::Type{Float16}, x::Digit30) = convert(Float16, x.hi)
+
+convert(::Type{Int128}, x::Digit30) = trunc(Int128,x.hi)+trunc(Int128,x.lo)
+convert(::Type{Int64}, x::Digit30) = convert(Int64, convert(Int128,x))
+
+function convert(::Type{Int32}, x::Digit30)
+    if (x.lo == trunc(x.lo)) && (x.hi == trunc(x.hi))
+        convert(Int32, trunc(Int64,x.hi)+trunc(Int64,x.lo))
+    else
+        throw(InexactError())
+    end
 end
+
+convert(::Type{Int16}, x::Digits30) = convert(Int16, convert(Int32,x))
+convert(::Type{Int8}, x::Digits30) = convert(Int8, convert(Int32,x))
+
+
 
 
