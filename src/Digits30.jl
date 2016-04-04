@@ -9,6 +9,7 @@ using ErrorfreeArithmetic
 include("type/concrete.jl")
 include("type/convert.jl")
 include("type/io.jl")
+include("type/primitive.jl")
 
 
 end # Digits30
