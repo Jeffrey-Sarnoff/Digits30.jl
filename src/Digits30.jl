@@ -4,6 +4,7 @@ import Base: convert, promote_rule, hash, string, show,
              zero, one, isinf, isnan, isfinite,
              (-), abs, sign, signbit, copysign, flipsign,
              isequal, isless, (<),(<=),(==),(>=),(>),
+             trunc, round, floor, ceil,
              (+),(*),(/),(\),
              (%),mod,rem,div,fld,cld,divrem,fldmod
 
@@ -21,5 +22,7 @@ include("type/comparatives.jl")
 include("type/io.jl")
 
 include("arith/ops.jl")
+include("arith/moddiv.jl")
+include("arith/round.jl")
 
 end # Digits30
