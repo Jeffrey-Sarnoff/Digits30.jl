@@ -39,6 +39,10 @@ end
 convert(::Type{Int16}, x::Digit30) = convert(Int16, convert(Int32,x))
 convert(::Type{Int8}, x::Digit30) = convert(Int8, convert(Int32,x))
 
+
+function convert(::Type{Rational{Base.GMP.BigInt}}, x::Digit30)
+   convert(Rational{Base.GMP.BigInt}, x.hi) + convert(Rational{Base.GMP.BigInt}, x.lo)
+end
 function convert{T<:Integer}(::Type{Rational{T}}, x::Digit30)
    convert(Rational{T}, x.hi) + convert(Rational{T}, x.lo)
 end
