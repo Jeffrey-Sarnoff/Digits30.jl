@@ -191,7 +191,9 @@ end
 function hypot(a::Digit30, b::Digit30)
     a = abs(a)
     b = abs(b)
-    t, x = min(a,b), max(a,b)
+    t, x = minmax(a,b)
     t = t/a
-    x * sqrt(1.0 + t*t)
+    t = sqr(t)
+    t = sqrt(one(Digits30) + t)
+    x * t
 end
