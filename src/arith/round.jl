@@ -1,7 +1,7 @@
 
 for (fn) in (:floor, :ceil, :round)
   @eval begin
-    function ($fn)(a::Digi30)
+    function ($fn)(a::Digit30)
         hi = ($fn)(a.hi)
         lo = 0.0
         if (hi == a.hi)
