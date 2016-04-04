@@ -1,3 +1,5 @@
+VERSION > v"0.4.99" && __precompile__()
+
 module Digits30
 
 import Base: convert, promote_rule, hash, string, show,
