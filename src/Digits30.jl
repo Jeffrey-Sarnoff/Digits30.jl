@@ -1,6 +1,6 @@
 module Digits30
 
-import Base: IO, IOStream, show
+import Base: convert, promote_rule, hash, string, show
 
 export Digit30, Dig30, D30
 
