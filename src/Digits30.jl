@@ -9,6 +9,8 @@ using ErrorfreeArithmetic
 include("type/concrete.jl")
 include("type/convert.jl")
 include("type/primitive.jl")
+include("type/predicates.jl")
+include("type/comparatives.jl")
 include("type/io.jl")
 
 
