@@ -36,8 +36,8 @@ function convert(::Type{Int32}, x::Digit30)
     end
 end
 
-convert(::Type{Int16}, x::Digits30) = convert(Int16, convert(Int32,x))
-convert(::Type{Int8}, x::Digits30) = convert(Int8, convert(Int32,x))
+convert(::Type{Int16}, x::Digit30) = convert(Int16, convert(Int32,x))
+convert(::Type{Int8}, x::Digit30) = convert(Int8, convert(Int32,x))
 
 
 
