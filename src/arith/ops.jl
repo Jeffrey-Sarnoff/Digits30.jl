@@ -151,8 +151,14 @@ end
 
 # roots
 
+
+#=
+      for a in [1e-15..1e18]
+      relerr ~1.3e-32  (106 bits)
+=#
+
 function sqrt(a::Digit30)
-    if a.hi >= 0.0
+    if a.hi <= 0.0
        if a.hi == 0.0
            return zero(Digit30)
        else
@@ -183,37 +189,6 @@ end
 
 
 
-
-#=
-#     for a in [1e-15..1e18]
-      relerr ~1.3e-32  (106 bits)
-
-function sqrt(a::Digit30)
-    if a.hi <= zero(Float64)
-       if a.hi == zero(Float64)
-           return zero(Digit30)
-       else
-           throw(ArgumentError("sqrt expects a nonnegative base"))
-       end
-    elseif (a.hi < 1.0e-18) | (a.hi > 1.0e18)
-        throw(ArgumentError("sqrt arg ($a) outside domain"))
-    end
-
-    if (a.hi < 1.0e-7)  # -log2(1.0e-7) < (1/2) Float64 significand bits
-        return one(Digit30) / sqrt(one(Digit30)/a)
-    end
-
-    # initial approximation to 1/sqrt(a)
-    r = Digit30(1.0/sqrt(a.hi), 0.0)
-
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-
-    r = a*r
-    divby2(r + a/r)
-end
-=#
 
 function hypot(a::Digit30, b::Digit30)
     a = abs(a)
