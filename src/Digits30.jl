@@ -4,10 +4,12 @@ import Base: convert, promote_rule, hash, string, show,
              zero, one, isinf, isnan, isfinite,
              (-), abs, sign, signbit, copysign, flipsign,
              isequal, isless, (<),(<=),(==),(>=),(>),
-             (+),(*),(/),(\) 
+             (+),(*),(/),(\),
+             (%),mod,rem,div,fld,cld,divrem,fldmod
 
 export Digit30, D30,
-       iszero, ispos, ispoz, isneg
+       iszero, ispos, ispoz, isneg,
+       mulby2, divby2, mulbypow2, divbypow2
 
 using ErrorfreeArithmetic
 
