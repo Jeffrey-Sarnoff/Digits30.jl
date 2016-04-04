@@ -52,6 +52,9 @@ convert{T<:Integer}(::Type{Digit30}, x::Rational{T}) =
 # promotions
 
 promote_rule(::Type{BigFloat}, ::Type{Digit30}) = BigFloat
+promote_rule(::Type{Rational{BigInt}}, ::Type{Digit30}) = Rational{BigInt}
+promote_rule(::Type{Rational{Int128}}, ::Type{Digit30}) = Rational{Int128}
+
 promote_rule{T<:AbstractFloat}(::Type{T}, ::Type{Digit30}) = Digit30
 promote_rule{T<:Integer}(::Type{T}, ::Type{Digit30}) = Digit30
 promote_rule{T<:Integer}(::Type{Rational{T}}, ::Type{Digit30}) = Digit30
