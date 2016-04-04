@@ -25,6 +25,6 @@ function Dig30{T<:Float64}(a::T, b::T) # hi,lo = eftAddGTE(hi,lo)
   Digit30(AsIs,hi,lo)
 end
 
-Base.show(io::IO, x::Digit30)
+Base.show(io::IOStream, x::Digit30)
    print(io, string("Digit30(",x.hi,", ",x.lo,")"))
 end
