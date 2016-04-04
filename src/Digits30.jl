@@ -1,8 +1,13 @@
 module Digits30
 
-import Base: convert, promote_rule, hash, string, show
+import Base: convert, promote_rule, hash, string, show,
+             zero, one, isinf, isnan, isfinite,
+             (-), abs, sign, signbit, copysign, flipsign,
+             isequal, isless, (<),(<=),(==),(>=),(>),
+             (+),(*),(/),(\) 
 
-export Digit30, D30
+export Digit30, D30,
+       iszero, ispos, ispoz, isneg
 
 using ErrorfreeArithmetic
 
