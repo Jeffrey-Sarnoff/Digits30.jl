@@ -7,7 +7,7 @@ import Base: convert, promote_rule, hash, string, show,
              (-), abs, sign, signbit, copysign, flipsign,
              isequal, isless, (<),(<=),(==),(>=),(>),
              trunc, round, floor, ceil,
-             (+),(*),(/),(\),
+             (+),(*),(/),(\),sqrt,
              (%),mod,rem,div,fld,cld,divrem,fldmod,
              fma
 
