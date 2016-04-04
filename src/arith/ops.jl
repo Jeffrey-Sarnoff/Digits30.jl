@@ -152,7 +152,7 @@ end
 # roots
 
 function sqrt(a::Digit30)
-    if a.hi <= 0.0
+    if a.hi >= 0.0
        if a.hi == 0.0
            return zero(Digit30)
        else
