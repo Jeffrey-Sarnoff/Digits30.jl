@@ -1,5 +1,5 @@
-typedef SmallerFloatInt Union{Float32,Float16,Int32,Int16,Int8}
-typedef FloatInt Union{Float64,Float32,Float16,Int64,Int32,Int16,Int8}
+typealias SmallerFloatInt Union{Float32,Float16,Int32,Int16,Int8}
+typealias FloatInt Union{Float64,Float32,Float16,Int64,Int32,Int16,Int8}
 
 Digit30{T<:SmallerFloatInt}(hi::T) = Digit30(hi,zero(T))
 
