@@ -7,14 +7,15 @@ import Base: convert, promote_rule, hash, string, show,
              (-), abs, sign, signbit, copysign, flipsign,
              isequal, isless, (<),(<=),(==),(>=),(>),
              trunc, round, floor, ceil,
-             (+),(*),(/),(\),sqrt,
+             (+),(*),(/),(\),sqrt,hypot,
              (%),mod,rem,div,fld,cld,divrem,fldmod,
              fma
 
 export Digit30, D30,
        iszero, ispos, ispoz, isneg,
        mulby2, divby2, mulbypow2, divbypow2,
-       recip, fms
+       sqr, recip,
+       fms
 
 using ErrorfreeArithmetic
 
