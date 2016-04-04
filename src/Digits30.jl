@@ -18,5 +18,6 @@ include("type/predicates.jl")
 include("type/comparatives.jl")
 include("type/io.jl")
 
+include("arith/ops.jl")
 
 end # Digits30
