@@ -2,7 +2,7 @@ module Digits30
 
 import Base: convert, promote_rule, hash, string, show
 
-export Digit30, Dig30, D30
+export Digit30, D30
 
 using ErrorfreeArithmetic
 
