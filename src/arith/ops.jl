@@ -151,7 +151,7 @@ end
 
 # roots
 
-function sqrt1(a::Digit30)
+function sqrt(a::Digit30)
     if a.hi <= zero(Float64)
        if a.hi == zero(Float64)
            return zero(Digit30)
