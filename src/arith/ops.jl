@@ -197,3 +197,6 @@ function hypot(a::Digit30, b::Digit30)
     t = sqrt(one(Digits30) + t)
     x * t
 end
+
+(hypot){T<:Real}(a::Digit30, b::T) = (hypot)(a, convert(Digit30,b))
+(hypot){T<:Real}(a::T, b::Digit30) = (hypot)(convert(Digit30,a), b)
