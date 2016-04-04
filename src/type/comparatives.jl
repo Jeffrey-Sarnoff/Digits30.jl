@@ -23,3 +23,10 @@ end
 @inline (<=)(a::Digit30,b::Digit30) = (a.hi < b.hi) || (a.hi==b.hi && a.lo<=b.lo)
 @inline (> )(a::Digit30,b::Digit30) = (a.hi > b.hi) || (a.hi==b.hi && a.lo>b.lo)
 @inline (>=)(a::Digit30,b::Digit30) = (a.hi > b.hi) || (a.hi==b.hi && a.lo>=b.lo)
+
+min{T<:Digit30}(a::T, b::T) = (a<b) ? a : b
+max{T<:Digit30}(a::T, b::T) = (b<a) ? a : b
+minmax{T<:Digit30}(a::T, b::T) = (a<b) ? (a,b) : (b,a)
+maxmin{T<:Digit30}(a::T, b::T) = (b<a) ? (a,b) : (b,a)
+
+
