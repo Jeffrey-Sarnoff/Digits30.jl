@@ -1,6 +1,6 @@
 module Digits30
 
-import Base: IO, show
+import Base: IO, IOStream, show
 
 export Digit30, Dig30, D30
 
