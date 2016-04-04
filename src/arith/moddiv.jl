@@ -66,9 +66,6 @@ end
 mod(a::Digit30,b::Float64) = mod(a,convert(Digit30,b))
 mod(a::Float64,b::Digit30) = mod(convert(Digit30,a),b)
 
-%{T<:TD}(a::T,b::T) = a - trunc(a/b)
-%(a::TD,b::Float64) = %(a,b)
-%(a::Float64,b::TD) = %(a,b)
 
 function divrem{T<:Digit30}(a::T,b::T)
     if (b.hi == zero(Float64))
