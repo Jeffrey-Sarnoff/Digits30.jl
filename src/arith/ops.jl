@@ -90,6 +90,10 @@ function fma{T<:Digit30}(a::T,b::T,c::T)
     Digit30(hi,lo)
 end
 
+function fms{T<:Digit30}(a::T,b::T,c::T)
+    hi,lo = eftFMSto2(a,b,c)
+    Digit30(hi,lo)
+end
 
 # reciprocation
 
