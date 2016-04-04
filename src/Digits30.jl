@@ -13,7 +13,8 @@ import Base: convert, promote_rule, hash, string, show,
 
 export Digit30, D30,
        iszero, ispos, ispoz, isneg,
-       mulby2, divby2, mulbypow2, divbypow2
+       mulby2, divby2, mulbypow2, divbypow2,
+       fms
 
 using ErrorfreeArithmetic
 
