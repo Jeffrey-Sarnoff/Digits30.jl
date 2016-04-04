@@ -173,17 +173,20 @@ function sqrt(a::Digit30)
         s = sqrt(r)
         return recip(s)
     end
-
+println("a")
     # initial approximation to 1/sqrt(a)
     r = Digit30(1.0/sqrt(a.hi), 0.0)
-
+println("b")
+    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
+println("c")    
     r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
     r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-
+println("d")
     r = a*r
+println("e")    
     #divby2(r + a/r)
     r += a/r
+println("f")    
     divby2(r)
 end
 
