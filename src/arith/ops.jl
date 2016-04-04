@@ -21,6 +21,10 @@ end
 (+)(a::Digit30,b::Signed) = (+)(a,convert(Float64,b))
 (+)(a::Signed,b::Digit30) = (+)(b,a)
 
+(+){T<:Real}(a::Digit30, b::T) = (+)(promote(a,b)...)
+(+){T<:Real}(a::T, b::Digit30) = (+)(promote(a,b)...)
+
+
 # subtraction
 
 function (-){T<:Digit30}(a::T,b::T)
@@ -49,6 +53,10 @@ end
 
 (-)(a::Digit30,b::Signed) = (-)(a,convert(Float64,b))
 (-)(a::Signed,b::Digit30) = (-)(convert(Float64,a),b)
+
+(-){T<:Real}(a::Digit30, b::T) = (-)(promote(a,b)...)
+(-){T<:Real}(a::T, b::Digit30) = (-)(promote(a,b)...)
+
 
 # multiplication
 
@@ -83,6 +91,10 @@ end
 (*)(a::Float64,b::Digit30) = (*)(b,a)
 (*)(a::Digit30,b::Signed) = (*)(a,convert(Float64,b))
 (*)(a::Signed,b::Digit30) = (*)(convert(Float64,a),b)
+
+(*){T<:Real}(a::Digit30, b::T) = (*)(promote(a,b)...)
+(*){T<:Real}(a::T, b::Digit30) = (*)(promote(a,b)...)
+
 
 
 function fma{T<:Digit30}(a::T,b::T,c::T)
@@ -129,6 +141,10 @@ function (/){T<:Digit30}(a::T,b::T)
   q1,q2 = eftAdd3to2(q1,q2,q3)
   Digit30(q1,q2)
 end
+
+
+(/){T<:Real}(a::Digit30, b::T) = (/)(promote(a,b)...)
+(/){T<:Real}(a::T, b::Digit30) = (/)(promote(a,b)...)
 
 # powers
 
