@@ -55,7 +55,8 @@ convert(::Type{Rational{Int128}}, x::Float120) =
    convert(Rational{Int128}, x.hi) + convert(Rational{Int128}, x.lo)
 convert(::Type{Rational{Base.GMP.BigInt}}, x::Float120) =
    convert(Rational{Base.GMP.BigInt}, x.hi) + convert(Rational{Base.GMP.BigInt}, x.lo)
-function convert{T<:Union{Int128,Base.GMP.BigInt}(::Type{Float120}, x::Rational{T})
+   
+function convert{T<:Union{Int128,Base.GMP.BigInt}}(::Type{Float120}, x::Rational{T})
     hi = Float64(x - convert(Rational{T},Float64(x)))
     lo = Float64(x - convert(Rational{T},hi))
     Float120(hi,lo)
