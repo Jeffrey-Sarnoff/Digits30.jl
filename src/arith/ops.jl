@@ -1,6 +1,7 @@
 # addition
 
-function (+){T<:Float120}(a::T,b::T)
+# function (+){T<:Float120}(a::T,b::T)
+function (+)(a::Float120,b::Float120)
     s1, s2 = eftAdd(a.hi,b.hi)
     t1, t2 = eftAdd(a.lo,b.lo)
     s2 += t1
@@ -9,6 +10,7 @@ function (+){T<:Float120}(a::T,b::T)
     s1, s2 = eftAddGTE(s1,s2)
     Float120(s1,s2)
 end
+
 
 function (+)(a::Float120,b::Float64)
     s1, s2 = eftAdd(a.hi,b)
