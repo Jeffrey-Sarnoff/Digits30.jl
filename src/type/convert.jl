@@ -1,34 +1,34 @@
 typealias SmallerFloatInt Union{Float32,Float16,Int32,Int16,Int8}
 typealias FloatInt Union{Float64,Float32,Float16,Int64,Int32,Int16,Int8}
 
-Digit30{T<:SmallerFloatInt}(hi::T) = Digit30(hi,zero(T))
+Float120{T<:SmallerFloatInt}(hi::T) = Float120(hi,zero(T))
 
-function Digit30{T<:SmallerFloatInt}(hi::T, lo::T)
+function Float120{T<:SmallerFloatInt}(hi::T, lo::T)
     high = Float64(hi)
     low  = Float64(lo)
     high, low = eftAdd(high, low)
-    Digit30(high,low)
+    Float120(high,low)
 end
 
-Digit30{T1<:FloatInt,T2<:FloatInt}(hi::T1, lo::T2) = Digit30(Float64(hi), Float64(lo))
+Float120{T1<:FloatInt,T2<:FloatInt}(hi::T1, lo::T2) = Float120(Float64(hi), Float64(lo))
 
-function convert(::Type{Digit30}, x::BigFloat)
+function convert(::Type{Float120}, x::BigFloat)
     hi = Float64(x)
     lo = Float64(x-hi)
-    Digit30(hi,lo)
+    Float120(hi,lo)
 end
 
-convert(::Type{BigFloat}, x::Digit30) = convert(BigFloat,x.hi) + convert(BigFloat,x.lo)
+convert(::Type{BigFloat}, x::Float120) = convert(BigFloat,x.hi) + convert(BigFloat,x.lo)
 
 
-convert(::Type{Float64}, x::Digit30) = x.hi
-convert(::Type{Float32}, x::Digit30) = convert(Float32, x.hi)
-convert(::Type{Float16}, x::Digit30) = convert(Float16, x.hi)
+convert(::Type{Float64}, x::Float120) = x.hi
+convert(::Type{Float32}, x::Float120) = convert(Float32, x.hi)
+convert(::Type{Float16}, x::Float120) = convert(Float16, x.hi)
 
-convert(::Type{Int128}, x::Digit30) = trunc(Int128,x.hi)+trunc(Int128,x.lo)
-convert(::Type{Int64}, x::Digit30) = convert(Int64, convert(Int128,x))
+convert(::Type{Int128}, x::Float120) = trunc(Int128,x.hi)+trunc(Int128,x.lo)
+convert(::Type{Int64}, x::Float120) = convert(Int64, convert(Int128,x))
 
-function convert(::Type{Int32}, x::Digit30)
+function convert(::Type{Int32}, x::Float120)
     if (x.lo == trunc(x.lo)) && (x.hi == trunc(x.hi))
         convert(Int32, trunc(Int64,x.hi)+trunc(Int64,x.lo))
     else
@@ -36,27 +36,27 @@ function convert(::Type{Int32}, x::Digit30)
     end
 end
 
-convert(::Type{Int16}, x::Digit30) = convert(Int16, convert(Int32,x))
-convert(::Type{Int8}, x::Digit30) = convert(Int8, convert(Int32,x))
+convert(::Type{Int16}, x::Float120) = convert(Int16, convert(Int32,x))
+convert(::Type{Int8}, x::Float120) = convert(Int8, convert(Int32,x))
 
 # resolve ambiguity
-convert(::Type{Rational{Base.GMP.BigInt}}, x::Digit30) =
+convert(::Type{Rational{Base.GMP.BigInt}}, x::Float120) =
    convert(Rational{Base.GMP.BigInt}, x.hi) + convert(Rational{Base.GMP.BigInt}, x.lo)
 
-convert{T<:Integer}(::Type{Rational{T}}, x::Digit30) =
+convert{T<:Integer}(::Type{Rational{T}}, x::Float120) =
    convert(Rational{T}, x.hi) + convert(Rational{T}, x.lo)
 
-convert{T<:Integer}(::Type{Digit30}, x::Rational{T}) =
-   convert(Digit30, convert(BigFloat,x))
+convert{T<:Integer}(::Type{Float120}, x::Rational{T}) =
+   convert(Float120, convert(BigFloat,x))
 
 # promotions
 
-promote_rule(::Type{BigFloat}, ::Type{Digit30}) = BigFloat
-promote_rule(::Type{Rational{BigInt}}, ::Type{Digit30}) = Rational{BigInt}
-promote_rule(::Type{Rational{Int128}}, ::Type{Digit30}) = Rational{Int128}
+promote_rule(::Type{BigFloat}, ::Type{Float120}) = BigFloat
+promote_rule(::Type{Rational{BigInt}}, ::Type{Float120}) = Rational{BigInt}
+promote_rule(::Type{Rational{Int128}}, ::Type{Float120}) = Rational{Int128}
 
-promote_rule{T<:AbstractFloat}(::Type{T}, ::Type{Digit30}) = Digit30
-promote_rule{T<:Integer}(::Type{T}, ::Type{Digit30}) = Digit30
-promote_rule{T<:Integer}(::Type{Rational{T}}, ::Type{Digit30}) = Digit30
+promote_rule{T<:AbstractFloat}(::Type{T}, ::Type{Float120}) = Float120
+promote_rule{T<:Integer}(::Type{T}, ::Type{Float120}) = Float120
+promote_rule{T<:Integer}(::Type{Rational{T}}, ::Type{Float120}) = Float120
 
 
