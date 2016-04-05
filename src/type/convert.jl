@@ -39,13 +39,6 @@ end
 convert(::Type{Int16}, x::Float120) = convert(Int16, convert(Int32,x))
 convert(::Type{Int8}, x::Float120) = convert(Int8, convert(Int32,x))
 
-convert{T<:Integer}(::Type{Rational{T}}, x::Float120) =
-   convert(Rational{T}, x.hi) + convert(Rational{T}, x.lo)
-
-convert{T<:Integer}(::Type{Float120}, x::Rational{T}) =
-   convert(Float120, convert(BigFloat,x))
-
-# promotions
 
 # resolve ambiguity
 convert(::Type{Bool}, x::Float120) = !(x.hi == 0.0)
@@ -61,6 +54,16 @@ function convert{T<:Union{Int128,Base.GMP.BigInt}}(::Type{Float120}, x::Rational
     lo = Float64(x - convert(Rational{T},hi))
     Float120(hi,lo)
 end
+
+
+convert{T<:Integer}(::Type{Rational{T}}, x::Float120) =
+   convert(Rational{T}, x.hi) + convert(Rational{T}, x.lo)
+
+convert{T<:Integer}(::Type{Float120}, x::Rational{T}) =
+   convert(Float120, convert(BigFloat,x))
+
+# promotions
+
 
 promote_rule(::Type{Bool}, ::Type{Float120}) = Float120
 promote_rule(::Type{Base.GMP.BigInt}, ::Type{Float120}) = Float120
