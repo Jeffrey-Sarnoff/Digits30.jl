@@ -69,11 +69,7 @@ promote_rule(::Type{Bool}, ::Type{Float120}) = Float120
 promote_rule(::Type{Base.GMP.BigInt}, ::Type{Float120}) = Float120
 promote_rule(::Type{Rational{Int128}}, ::Type{Float120}) = Rational{Int128}
 promote_rule(::Type{Rational{Base.GMP.BigInt}}, ::Type{Float120}) = Rational{Base.GMP.BigInt}
-
-
 promote_rule(::Type{BigFloat}, ::Type{Float120}) = BigFloat
-promote_rule(::Type{Rational{BigInt}}, ::Type{Float120}) = Rational{BigInt}
-promote_rule(::Type{Rational{Int128}}, ::Type{Float120}) = Rational{Int128}
 
 promote_rule{T<:AbstractFloat}(::Type{T}, ::Type{Float120}) = Float120
 promote_rule{T<:Integer}(::Type{T}, ::Type{Float120}) = Float120
