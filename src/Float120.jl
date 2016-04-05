@@ -1,6 +1,6 @@
 VERSION > v"0.4.9" && __precompile__()
 
-module Digits30
+module Float120
 
 import Base: convert, promote_rule, hash, string, show,
              zero, one, isinf, isnan, isfinite,
@@ -32,4 +32,4 @@ include("arith/ops.jl")
 include("arith/moddiv.jl")
 include("arith/round.jl")
 
-end # Digits30
+end # Float120
