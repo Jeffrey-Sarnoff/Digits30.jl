@@ -1,118 +1,118 @@
 # addition
 
-function (+){T<:Digit30}(a::T,b::T)
+function (+){T<:Float120}(a::T,b::T)
     s1, s2 = eftAdd(a.hi,b.hi)
     t1, t2 = eftAdd(a.lo,b.lo)
     s2 += t1
     s1, s2 = eftAddGTE(s1,s2)
     s2 += t2
     s1, s2 = eftAddGTE(s1,s2)
-    Digit30(s1,s2)
+    Float120(s1,s2)
 end
 
-function (+)(a::Digit30,b::Float64)
+function (+)(a::Float120,b::Float64)
     s1, s2 = eftAdd(a.hi,b)
     s2 += a.lo
     s1, s2 = eftAddGTE(s1,s2)
-    Digit30(s1,s2)
+    Float120(s1,s2)
 end
 
-(+)(a::Float64,b::Digit30) = (+)(b,a)
-(+)(a::Digit30,b::Signed) = (+)(a,convert(Float64,b))
-(+)(a::Signed,b::Digit30) = (+)(b,a)
+(+)(a::Float64,b::Float120) = (+)(b,a)
+(+)(a::Float120,b::Signed) = (+)(a,convert(Float64,b))
+(+)(a::Signed,b::Float120) = (+)(b,a)
 
-(+){T<:Real}(a::Digit30, b::T) = (+)(promote(a,b)...)
-(+){T<:Real}(a::T, b::Digit30) = (+)(promote(a,b)...)
+(+){T<:Real}(a::Float120, b::T) = (+)(promote(a,b)...)
+(+){T<:Real}(a::T, b::Float120) = (+)(promote(a,b)...)
 
 
 # subtraction
 
-function (-){T<:Digit30}(a::T,b::T)
+function (-){T<:Float120}(a::T,b::T)
     s1, s2 = eftSub(a.hi,b.hi)
     t1, t2 = eftSub(a.lo,b.lo)
     s2 += t1
     s1, s2 = eftAddGTE(s1,s2)
     s2 += t2
     s1, s2 = eftAddGTE(s1,s2)
-    Digit30(s1,s2)
+    Float120(s1,s2)
 end
 
-function (-)(a::Digit30,b::Float64)
+function (-)(a::Float120,b::Float64)
     s1, s2 = eftSub(a.hi,b)
     s2 += a.lo
     s1, s2 = eftAddGTE(s1,s2)
-    Digit30(s1,s2)
+    Float120(s1,s2)
 end
 
-function (-)(a::Float64,b::Digit30)
+function (-)(a::Float64,b::Float120)
     s1, s2 = eftSub(a,b.hi)
     s2 -= b.lo
     s1, s2 = eftAddGTE(s1,s2)
-    Digit30(s1,s2)
+    Float120(s1,s2)
 end
 
-(-)(a::Digit30,b::Signed) = (-)(a,convert(Float64,b))
-(-)(a::Signed,b::Digit30) = (-)(convert(Float64,a),b)
+(-)(a::Float120,b::Signed) = (-)(a,convert(Float64,b))
+(-)(a::Signed,b::Float120) = (-)(convert(Float64,a),b)
 
-(-){T<:Real}(a::Digit30, b::T) = (-)(promote(a,b)...)
-(-){T<:Real}(a::T, b::Digit30) = (-)(promote(a,b)...)
+(-){T<:Real}(a::Float120, b::T) = (-)(promote(a,b)...)
+(-){T<:Real}(a::T, b::Float120) = (-)(promote(a,b)...)
 
 
 # multiplication
 
 
-function (sqr)(a::Digit30)
+function (sqr)(a::Float120)
   t1,t2 = eftMul(a.hi,a.hi)
   t3 = a.hi * a.lo
   t5 = t3 + t3
   t6 = t2 + t5
   t1,t6 = eftAddGTE(t1,t6)
-  Digit30(t1,t6)
+  Float120(t1,t6)
 end
 
-function (*){T<:Digit30}(a::T,b::T)
+function (*){T<:Float120}(a::T,b::T)
   t1,t2 = eftMul(a.hi,b.hi)
   t3 = a.hi * b.lo
   t4 = a.lo * b.hi
   t5 = t3 + t4
   t6 = t2 + t5
   t1,t6 = eftAddGTE(t1,t6)
-  Digit30(t1,t6)
+  Float120(t1,t6)
 end
 
-function (*)(a::Digit30,b::Float64)
+function (*)(a::Float120,b::Float64)
   t1,t2 = eftMul(a.hi,b)
   t4 = a.lo * b
   t6 = t2 + t4
   t1,t6 = eftAddGTE(t1,t6)
-  Digit30(t1,t6)
+  Float120(t1,t6)
 end
 
-(*)(a::Float64,b::Digit30) = (*)(b,a)
-(*)(a::Digit30,b::Signed) = (*)(a,convert(Float64,b))
-(*)(a::Signed,b::Digit30) = (*)(convert(Float64,a),b)
+(*)(a::Float64,b::Float120) = (*)(b,a)
+(*)(a::Float120,b::Signed) = (*)(a,convert(Float64,b))
+(*)(a::Signed,b::Float120) = (*)(convert(Float64,a),b)
 
-(*){T<:Real}(a::Digit30, b::T) = (*)(promote(a,b)...)
-(*){T<:Real}(a::T, b::Digit30) = (*)(promote(a,b)...)
+(*){T<:Real}(a::Float120, b::T) = (*)(promote(a,b)...)
+(*){T<:Real}(a::T, b::Float120) = (*)(promote(a,b)...)
 
 
 
-function fma{T<:Digit30}(a::T,b::T,c::T)
+function fma{T<:Float120}(a::T,b::T,c::T)
     hi,lo = eftFMAto2(a,b,c)
-    Digit30(hi,lo)
+    Float120(hi,lo)
 end
 
-function fms{T<:Digit30}(a::T,b::T,c::T)
+function fms{T<:Float120}(a::T,b::T,c::T)
     hi,lo = eftFMSto2(a,b,c)
-    Digit30(hi,lo)
+    Float120(hi,lo)
 end
 
 # reciprocation
 
 
-function (recip)(b::Digit30)
+function (recip)(b::Float120)
   q1 = one(Float64) / b.hi
-  r  = one(Digit30) - q1*b
+  r  = one(Float120) - q1*b
 
   q2 = r.hi / b.hi
   r = r - (q2 * b)
@@ -123,12 +123,12 @@ function (recip)(b::Digit30)
 
   q1,q2 = eftAdd(q1, q2)
   q1,q2 = eftAdd3to2(q1,q2,q3)
-  Digit30(q1,q2)
+  Float120(q1,q2)
 end
 
 # division
 
-function (/){T<:Digit30}(a::T,b::T)
+function (/){T<:Float120}(a::T,b::T)
   q1 = a.hi / b.hi
   r  = a - (q1 * b)
 
@@ -139,12 +139,12 @@ function (/){T<:Digit30}(a::T,b::T)
 
   q1,q2 = eftAddGTE(q1, q2)
   q1,q2 = eftAdd3to2(q1,q2,q3)
-  Digit30(q1,q2)
+  Float120(q1,q2)
 end
 
 
-(/){T<:Real}(a::Digit30, b::T) = (/)(promote(a,b)...)
-(/){T<:Real}(a::T, b::Digit30) = (/)(promote(a,b)...)
+(/){T<:Real}(a::Float120, b::T) = (/)(promote(a,b)...)
+(/){T<:Real}(a::T, b::Float120) = (/)(promote(a,b)...)
 
 # powers
 
@@ -157,10 +157,10 @@ end
       relerr ~1.3e-32  (106 bits)
 =#
 
-function sqrt(a::Digit30)
+function sqrt(a::Float120)
     if a.hi <= 0.0
        if a.hi == 0.0
-           return zero(Digit30)
+           return zero(Float120)
        else
            throw(ArgumentError("sqrt expects a nonnegative base"))
        end
@@ -174,10 +174,10 @@ function sqrt(a::Digit30)
         return recip(s)
     end
     # initial approximation to 1/sqrt(a)
-    r = Digit30(1.0/sqrt(a.hi), 0.0)
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
-    r = r + divby2( r * (one(Digit30) - (a*(r*r))) )
+    r = Float120(1.0/sqrt(a.hi), 0.0)
+    r = r + divby2( r * (one(Float120) - (a*(r*r))) )
+    r = r + divby2( r * (one(Float120) - (a*(r*r))) )
+    r = r + divby2( r * (one(Float120) - (a*(r*r))) )
 
     r = a*r
     #divby2(r + a/r)
@@ -186,9 +186,7 @@ function sqrt(a::Digit30)
 end
 
 
-
-
-function hypot(a::Digit30, b::Digit30)
+function hypot(a::Float120, b::Float120)
     a = abs(a)
     b = abs(b)
     t, x = minmax(a,b)
@@ -198,5 +196,5 @@ function hypot(a::Digit30, b::Digit30)
     x * t
 end
 
-(hypot){T<:Real}(a::Digit30, b::T) = (hypot)(a, convert(Digit30,b))
-(hypot){T<:Real}(a::T, b::Digit30) = (hypot)(convert(Digit30,a), b)
+(hypot){T<:Real}(a::Float120, b::T) = (hypot)(a, convert(Float120,b))
+(hypot){T<:Real}(a::T, b::Float120) = (hypot)(convert(Float120,a), b)
