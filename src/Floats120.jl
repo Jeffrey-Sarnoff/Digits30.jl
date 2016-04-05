@@ -12,7 +12,7 @@ import Base: convert, promote_rule, hash, string, show,
              (%),mod,rem,div,fld,cld,divrem,fldmod,
              fma
 
-export Digit30, D30,
+export Float120, F120,
        iszero, ispos, ispoz, isneg,
        maxmin,
        mulby2, divby2, mulbypow2, divbypow2,
