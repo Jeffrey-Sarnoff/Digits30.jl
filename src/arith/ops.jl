@@ -21,8 +21,8 @@ end
 (+)(a::Float120,b::Signed) = (+)(a,convert(Float64,b))
 (+)(a::Signed,b::Float120) = (+)(b,a)
 
-(+){T<:Real}(a::Float120, b::T) = (+)(promote(a,b)...)
-(+){T<:Real}(a::T, b::Float120) = (+)(promote(a,b)...)
+(+)(a::Float120, b::Real) = (+)(promote(a,b)...)
+(+)(a::Real, b::Float120) = (+)(promote(a,b)...)
 
 
 # subtraction
@@ -54,8 +54,8 @@ end
 (-)(a::Float120,b::Signed) = (-)(a,convert(Float64,b))
 (-)(a::Signed,b::Float120) = (-)(convert(Float64,a),b)
 
-(-){T<:Real}(a::Float120, b::T) = (-)(promote(a,b)...)
-(-){T<:Real}(a::T, b::Float120) = (-)(promote(a,b)...)
+(-)(a::Float120, b::Real) = (-)(promote(a,b)...)
+(-)(a::Real, b::Float120) = (-)(promote(a,b)...)
 
 
 # multiplication
@@ -92,8 +92,8 @@ end
 (*)(a::Float120,b::Signed) = (*)(a,convert(Float64,b))
 (*)(a::Signed,b::Float120) = (*)(convert(Float64,a),b)
 
-(*){T<:Real}(a::Float120, b::T) = (*)(promote(a,b)...)
-(*){T<:Real}(a::T, b::Float120) = (*)(promote(a,b)...)
+(*)(a::Float120, b::Real) = (*)(promote(a,b)...)
+(*)(a::Real, b::Float120) = (*)(promote(a,b)...)
 
 
 
@@ -143,8 +143,8 @@ function (/){T<:Float120}(a::T,b::T)
 end
 
 
-(/){T<:Real}(a::Float120, b::T) = (/)(promote(a,b)...)
-(/){T<:Real}(a::T, b::Float120) = (/)(promote(a,b)...)
+(/)(a::Float120, b::Real) = (/)(promote(a,b)...)
+(/)(a::Real, b::Float120) = (/)(promote(a,b)...)
 
 # powers
 
@@ -196,5 +196,5 @@ function hypot(a::Float120, b::Float120)
     x * t
 end
 
-(hypot){T<:Real}(a::Float120, b::T) = (hypot)(a, convert(Float120,b))
-(hypot){T<:Real}(a::T, b::Float120) = (hypot)(convert(Float120,a), b)
+(hypot)(a::Float120, b::Real) = (hypot)(a, convert(Float120,b))
+(hypot)(a::Real, b::Float120) = (hypot)(convert(Float120,a), b)
