@@ -14,6 +14,16 @@ isof10toPow{T<:Integer}(x::T) = isof10toPow(float(x))
 isof2toPow{T<:AbstractFloat}(x::T) = floor(Int, log2(abs(x)))
 isof2toPow{T<:Integer}(x::T) = isof2toPow(float(x))
 
+function frexp10(x::AbstractFloat)
+    p10 = isof10toPow(x)
+    x/(10.0^p10), p10
+end
+
+function ldexp10(frxp::Tuple{AbstractFloat,AbstractFloat})
+    p10 = 10.0^frxp[2]
+    frxp[1] * p10
+end
+
 #=
 Goal: 30 digit base 10 significand
 
