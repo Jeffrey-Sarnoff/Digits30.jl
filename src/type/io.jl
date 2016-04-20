@@ -31,9 +31,7 @@ function thirtydigits(x::Float120)
        sfr,sxp = split(string(round(bigx,30-(1+isof10toPow(bigx)),10)),"e")
        srounded = string((isneg?"-":""),sfr[1:31],"e",sxp)
    else
+       srounded = string((isneg?"-":""),stringx[1:31])
    end
-   #fr,xp = frexp(bigx)
-   #roundfr = ldexp(round(fr,30,10),xp)
-   #stringfr = @sprintf("%30.30f",roundfr)
    srounded
 end   
