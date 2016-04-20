@@ -100,12 +100,12 @@ end
 
 
 function fma{T<:Float120}(a::T,b::T,c::T)
-    hi,lo = eftFMAto2(a,b,c)
+    hi,lo = eftFMAas2(a,b,c)
     Float120(hi,lo)
 end
 
 function fms{T<:Float120}(a::T,b::T,c::T)
-    hi,lo = eftFMSto2(a,b,c)
+    hi,lo = eftFMSas2(a,b,c)
     Float120(hi,lo)
 end
 
