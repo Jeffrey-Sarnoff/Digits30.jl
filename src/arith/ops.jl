@@ -140,7 +140,7 @@ function (/){T<:Float120}(a::T,b::T)
   q3 = r.hi / b.hi
 
   q1,q2 = eftAddGTE(q1, q2)
-  q1,q2 = eftAdd3to2(q1,q2,q3)
+  q1,q2 = eftAddAs2(q1,q2,q3)
   Float120(q1,q2)
 end
 
