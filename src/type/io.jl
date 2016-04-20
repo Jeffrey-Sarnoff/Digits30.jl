@@ -19,10 +19,11 @@ function frexp10(x::AbstractFloat)
     x/(10.0^p10), p10
 end
 
-function ldexp10(frxp::Tuple{AbstractFloat,Integer})
-    p10 = 10.0^frxp[2]
-    frxp[1] * p10
+function ldexp10(fr::AbstractFloat,xp::Integer})
+    p10 = 10.0^xp
+    fr * p10
 end
+ldexp10(frxp::Tuple{AbstractFloat,Integer}) = ldexp10(frxp[1],frxp[2])
 
 #=
 Goal: 30 digit base 10 significand
