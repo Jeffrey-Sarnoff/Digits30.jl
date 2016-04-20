@@ -26,6 +26,11 @@ end
 ldexp10(frxp::Tuple{AbstractFloat,Integer}) = ldexp10(frxp[1],frxp[2])
 
 #=
+fr,xp=frexp(convert(BigFloat,ff))
+rs=rstrip(@sprintf("%36.36f", round(fr,31,10)), '0')
+ldexp(parse(BigFloat,rs),xp)
+=#
+#=
 Goal: 30 digit base 10 significand
 
 30 digits is ~99.658 bits,
