@@ -34,4 +34,8 @@ include("arith/ops.jl")
 include("arith/moddiv.jl")
 include("arith/round.jl")
 
+include("math/exp.jl")
+include("math/log.jl")
+
+
 end # Floats120
