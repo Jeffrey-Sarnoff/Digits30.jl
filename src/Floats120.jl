@@ -20,6 +20,7 @@ export Float120, F120,
        fms, stretch
 
 using ErrorfreeArithmetic
+using FloatSafeInts
 
 include("type/concrete.jl")
 include("type/convert.jl")
