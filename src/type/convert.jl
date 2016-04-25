@@ -64,15 +64,18 @@ function convert(::Type{Float120}, x::Int64)
     end
 end
 
+const Float120safemax128 = Int128(  207_691_874_341_393_105_096_183_856_895_509_888 )
+const Float120safemin128 = Int128( -207_691_874_341_393_105_096_183_856_895_509_888 )
+
 function convert(::Type{Float120}, x::Int128)
     if signbit(x)
-        if x > -207_691_874_341_393_105_096_183_856_895_509_889
+        if x >= Float120safemin128
             Float120(convert(BigFloat,convert(BigInt,x)))
         else
             throw(DomainError())
         end
     else
-        if x < 207_691_874_341_393_105_096_183_856_895_509_889
+        if x <= Float120safemax128
             Float120(convert(BigFloat,convert(BigInt,x)))
         else
             throw(DomainError())
