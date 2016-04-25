@@ -17,7 +17,7 @@ export Float120, F120,
        maxmin,
        mulby2, divby2, mulbypow2, divbypow2,
        sqr, recip,
-       fms
+       fms, stretch
 
 using ErrorfreeArithmetic
 
