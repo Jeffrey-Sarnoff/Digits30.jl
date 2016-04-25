@@ -19,7 +19,7 @@ function frexp10(x::AbstractFloat)
     x/(10.0^p10), p10
 end
 
-function ldexp10(fr::AbstractFloat,xp::Integer})
+function ldexp10(fr::AbstractFloat, xp::Integer)
     p10 = 10.0^xp
     fr * p10
 end
