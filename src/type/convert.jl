@@ -102,10 +102,10 @@ end
 
 
 convert{T<:Integer}(::Type{Rational{T}}, x::Float120) =
-   convert(Rational{T}, x.hi) + convert(Rational{T}, x.lo)
+    convert(Rational{T},convert(Rational{BigInt},convert(BigFloat,x)))
 
 convert{T<:Integer}(::Type{Float120}, x::Rational{T}) =
-   convert(Float120, convert(BigFloat,x))
+   convert(Float120, convert(BigFloat,convert(Rational{BigInt},x)))
 
 # promotions
 
