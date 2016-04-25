@@ -25,6 +25,11 @@ convert(::Type{Float64}, x::Float120) = x.hi
 convert(::Type{Float32}, x::Float120) = convert(Float32, x.hi)
 convert(::Type{Float16}, x::Float120) = convert(Float16, x.hi)
 
+convert(::Type{Float120}, x::Float64) = Float120(x)
+convert(::Type{Float120}, x::Float32) = Float120(convert(Float64,x))
+convert(::Type{Float120}, x::Float16) = Float120(convert(Float64,x))
+
+
 convert(::Type{Int128}, x::Float120) = trunc(Int128,x.hi)+trunc(Int128,x.lo)
 convert(::Type{Int64}, x::Float120) = convert(Int64, convert(Int128,x))
 
@@ -38,6 +43,14 @@ end
 
 convert(::Type{Int16}, x::Float120) = convert(Int16, convert(Int32,x))
 convert(::Type{Int8}, x::Float120) = convert(Int8, convert(Int32,x))
+
+convert(::Type{Float120}, x::Int8) = Float120(convert(Float64,x))
+convert(::Type{Float120}, x::Int16) = Float120(convert(Float64,x))
+convert(::Type{Float120}, x::Int32) = Float120(convert(Float64,x))
+convert(::Type{Float120}, x::Int64) = Float120(convert(Float64,x))
+convert(::Type{Float120}, x::Int128) = Float120(convert(Float64,x))
+
+
 
 
 # resolve ambiguity
