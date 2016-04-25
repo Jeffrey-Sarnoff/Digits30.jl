@@ -51,31 +51,31 @@ convert(::Type{Float120}, x::Int32) = Float120(convert(Float64,x))
 function convert(::Type{Float120}, x::Int64)
     if signbit(x)
         if x < safemin(Float64)
-            throw(DomainError())
+            convert(Float120, convert(Int128,x))
         else
             Float120(convert(Float64,x))
         end
     else
         if x > safemax(Float64)
-            throw(DomainError())
+            convert(Float120, convert(Int128,x))
         else
             Float120(convert(Float64,x))
         end
     end
 end
 
-function convert(::Type{Float120}, x::Int64)
+function convert(::Type{Float120}, x::Int128)
     if signbit(x)
-        if x < safemin(Float64)
-            throw(DomainError())
+        if x > -207_691_874_341_393_105_096_183_856_895_509_889
+            Float120(convert(BigFloat,convert(BigInt,x)))
         else
-            Float120(convert(Float64,x))
+            throw(DomainError())
         end
     else
-        if x > safemax(Float64)
-            throw(DomainError())
+        if x < 207_691_874_341_393_105_096_183_856_895_509_889
+            Float120(convert(BigFloat,convert(BigInt,x)))
         else
-            Float120(convert(Float64,x))
+            throw(DomainError())
         end
     end
 end
