@@ -47,8 +47,38 @@ convert(::Type{Int8}, x::Float120) = convert(Int8, convert(Int32,x))
 convert(::Type{Float120}, x::Int8) = Float120(convert(Float64,x))
 convert(::Type{Float120}, x::Int16) = Float120(convert(Float64,x))
 convert(::Type{Float120}, x::Int32) = Float120(convert(Float64,x))
-convert(::Type{Float120}, x::Int64) = Float120(convert(Float64,x))
-convert(::Type{Float120}, x::Int128) = Float120(convert(Float64,x))
+
+function convert(::Type{Float120}, x::Int64)
+    if signbit(x)
+        if x < safemin(Float64)
+            throw(DomainError())
+        else
+            Float120(convert(Float64,x))
+        end
+    else
+        if x > safemax(Float64)
+            throw(DomainError())
+        else
+            Float120(convert(Float64,x))
+        end
+    end
+end
+
+function convert(::Type{Float120}, x::Int64)
+    if signbit(x)
+        if x < safemin(Float64)
+            throw(DomainError())
+        else
+            Float120(convert(Float64,x))
+        end
+    else
+        if x > safemax(Float64)
+            throw(DomainError())
+        else
+            Float120(convert(Float64,x))
+        end
+    end
+end
 
 
 
