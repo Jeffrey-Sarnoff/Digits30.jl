@@ -69,13 +69,13 @@ const Float120safemin128 = Int128( -207_691_874_341_393_105_096_183_856_895_509_
 
 function convert(::Type{Float120}, x::Int128)
     if signbit(x)
-        if x >= Float120safemin128
+        if x > typemin(Int128)
             Float120(convert(BigFloat,convert(BigInt,x)))
         else
             throw(DomainError())
         end
     else
-        if x <= Float120safemax128
+        if x <= typemax(Int128)
             Float120(convert(BigFloat,convert(BigInt,x)))
         else
             throw(DomainError())
